@@ -62,7 +62,9 @@ def __export(export_settings):
     exporter = GlTF2Exporter(export_settings)
     __gather_gltf(exporter, export_settings)
     buffer = __create_buffer(exporter, export_settings)
-    exporter.finalize_images()
+    if export_settings['gltf_image_format'] != 'NONE':
+        exporter.finalize_images()
+
     json = __fix_json(exporter.glTF.to_dict())
 
     return json, buffer

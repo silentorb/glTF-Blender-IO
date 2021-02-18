@@ -98,7 +98,7 @@ def __gather_mime_type(sockets, export_image, export_settings):
         if socket.name == "Alpha":
             return "image/png"
 
-    if export_settings["gltf_image_format"] == "AUTO":
+    if export_settings["gltf_image_format"] == "AUTO" or export_settings['gltf_image_format'] == 'NONE':
         image = export_image.blender_image()
         if image is not None and __is_blender_image_a_jpeg(image):
             return "image/jpeg"
